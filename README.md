@@ -1,52 +1,673 @@
-<div align="center">
-  
-# 👋 欢迎来到 TYY-123456 的 GitHub 主页
+[index.html](https://github.com/user-attachments/files/28382754/index.html)
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=500&color=2E9AF&center=true&width=500&lines=你好!+我是+TYY-123456;全栈开发者;热爱开源与创造;欢迎交流!" alt="Typing SVG" />
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仝莹莹 | 科研助理 | 人工智能mRNA疫苗研究</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
----
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
 
-## 🐍 我的代码贡献被吃掉了！
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TYY-123456/TYY-123456/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/TYY-123456/TYY-123456/output/github-contribution-grid-snake.svg">
-  <img alt="github-snake" src="https://raw.githubusercontent.com/TYY-123456/TYY-123456/output/github-contribution-grid-snake.svg">
-</picture>
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out;
+        }
 
----
+        .header-wave {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 40px 60px;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
 
-## 📊 我的 GitHub 数据
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: bounceIn 0.6s ease-out;
+        }
 
-<img src="https://github-readme-stats.vercel.app/api?username=TYY-123456&show_icons=true&theme=radical&hide_border=true" width="48%" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=TYY-123456&theme=radical&hide_border=true" width="48%" />
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            animation: slideInLeft 0.6s ease-out;
+        }
 
----
+        .name .first-name {
+            background: rgba(255,255,255,0.2);
+            padding: 0 15px;
+            border-radius: 40px;
+            display: inline-block;
+        }
 
-## 🛠️ 我常用的技术
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            animation: slideInRight 0.6s ease-out;
+        }
 
-<p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-</p>
+        .title-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
 
----
+        .education {
+            margin-top: 15px;
+            font-size: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
 
-## 📈 今日访客
+        .education span {
+            background: rgba(255,255,255,0.15);
+            padding: 5px 15px;
+            border-radius: 30px;
+            display: inline-block;
+        }
 
-<img src="https://komarev.com/ghpvc/?username=TYY-123456&color=brightgreen&style=flat-square" />
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
 
----
+        .wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 50px;
+        }
 
-### 💬 关于我
+        .content {
+            padding: 40px;
+        }
 
-- 🔭 我正在努力学习更多技术
-- 🌱 当前正在探索前端动画与 3D 效果
-- 👯 希望参与有趣的开源项目
-- 📫 可以通过 GitHub 与我联系
+        .section-title {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-</div>
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* 研究方向 */
+        .research-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .research-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            animation: pulse 2s infinite, glow 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* 技能网格 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .skill-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* 论文卡片 */
+        .paper-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            border-left: 4px solid #667eea;
+        }
+
+        .paper-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .paper-title {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .paper-journal {
+            color: #667eea;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .paper-authors {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* 专利卡片 */
+        .patent-card {
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            border: 1px solid #667eea30;
+        }
+
+        .patent-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .patent-title {
+            font-weight: 700;
+            color: #764ba2;
+            margin-bottom: 8px;
+        }
+
+        .patent-number {
+            color: #667eea;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-family: monospace;
+        }
+
+        .patent-inventors {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* 兴趣标签 */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .interest-tag {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 500;
+            animation: fadeInUp 0.5s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .interest-tag:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            background: #f0f2f5;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .contact-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            background: #667eea;
+            color: white;
+        }
+
+        /* 打字机效果 */
+        .typing-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 30px 0 20px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .typing {
+            border-right: 2px solid #667eea;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        /* 动画延迟 */
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+
+        /* 关键帧动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: #667eea; }
+            50.1%, 100% { border-color: transparent; }
+        }
+
+        @media (max-width: 768px) {
+            .name { font-size: 1.8rem; }
+            .content { padding: 25px; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .typing { white-space: normal; border-right: none; }
+            .paper-title { font-size: 0.85rem; }
+        }
+
+        /* 粒子背景 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="profile-card">
+            <div class="header-wave">
+                <div class="avatar">
+                    🔬
+                </div>
+                <div class="name">
+                    <span class="first-name">仝莹莹</span>
+                </div>
+                <div class="title">
+                    <span class="title-tag">AIM中心 科研助理</span>
+                </div>
+                <div class="education">
+                    <span>🎓 硕士毕业于 沈阳药科大学</span>
+                </div>
+                <div class="wave">
+                    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="white"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 研究方向 -->
+                <div class="research-section">
+                    <div class="section-title">🎯 研究方向</div>
+                    <div class="research-badge">
+                        🤖 AI + mRNA 疫苗开发 & 肿瘤免疫治疗
+                    </div>
+                </div>
+
+                <!-- 实验技能 -->
+                <div class="section-title">🧪 核心实验技能</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🐭</div>
+                        <div class="skill-name">小鼠荷瘤</div>
+                        <div class="skill-desc">肿瘤模型建立</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">💉</div>
+                        <div class="skill-name">尾静脉注射</div>
+                        <div class="skill-desc">精准给药技术</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🧫</div>
+                        <div class="skill-name">细胞培养</div>
+                        <div class="skill-desc">无菌操作·传代·冻存</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🔬</div>
+                        <div class="skill-name">WB实验</div>
+                        <div class="skill-desc">Western Blot</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🧬</div>
+                        <div class="skill-name">质粒提取与扩增</div>
+                        <div class="skill-desc">分子克隆基础</div>
+                    </div>
+                </div>
+
+                <!-- 发表论文 -->
+                <div class="section-title">📄 代表性论文</div>
+                <div class="paper-card">
+                    <div class="paper-title">
+                        Motor neuron and pancreas homeobox 1 (MNX1) suppresses Triple-Negative Breast Cancer (TNBC) cells phagocytosis by macrophage through transcriptionally regulating CD24.
+                    </div>
+                    <div class="paper-journal">
+                        Biochim Biophys Acta Mol Basis Dis. 2025 Jun;1871(5):167763.
+                    </div>
+                    <div class="paper-authors">
+                        <strong>Tong YY</strong>, Wang BZ, Zhang YJ, Jiang LL, Ding XF, Zhou J, Zuo DY, Chen J, Zhu J, Chen G.
+                    </div>
+                </div>
+
+                <!-- 发明专利 -->
+                <div class="section-title">💡 发明专利</div>
+                <div class="patent-card">
+                    <div class="patent-title">
+                        “人源化巨噬细胞免疫重建小鼠模型及其应用”
+                    </div>
+                    <div class="patent-number">
+                        专利号：ZL202311267484.1
+                    </div>
+                    <div class="patent-inventors">
+                        发明人：陈光, <strong>仝莹莹</strong>, 丁晓飞, 陈洁, 卢洪胜
+                    </div>
+                </div>
+
+                <!-- 研究兴趣 -->
+                <div class="section-title">✨ 研究兴趣</div>
+                <div class="interests">
+                    <span class="interest-tag">🤖 AI驱动疫苗设计</span>
+                    <span class="interest-tag">💉 mRNA肿瘤疫苗</span>
+                    <span class="interest-tag">🦠 肿瘤免疫微环境</span>
+                    <span class="interest-tag">🧬 巨噬细胞免疫治疗</span>
+                    <span class="interest-tag">🎯 三阴性乳腺癌靶向治疗</span>
+                </div>
+
+                <!-- 打字机自我介绍 -->
+                <div class="typing-text">
+                    <span class="typing" id="typing"></span>
+                </div>
+
+                <!-- 联系方式 -->
+                <div class="contact-section">
+                    <a href="mailto:1558806511@qq.com" class="contact-email">
+                        📧 1558806511@qq.com
+                    </a>
+                    <p style="margin-top: 15px; color: #888; font-size: 0.85rem;">
+                        欢迎学术交流与合作 🤝
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 打字机效果 - 更新为更丰富的自我介绍
+        const texts = [
+            "✨ 我是仝莹莹，AIM中心科研助理",
+            "🎓 硕士毕业于沈阳药科大学",
+            "🧬 专注人工智能驱动的 mRNA 疫苗开发",
+            "🐭 熟练掌握小鼠荷瘤、尾静脉注射等技术",
+            "📄 发表BBA Mol Basis Dis论文1篇",
+            "💡 拥有发明专利1项：人源化巨噬细胞免疫重建小鼠模型",
+            "🚀 用AI加速肿瘤疫苗创新"
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing');
+        
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+                return;
+            }
+            
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeEffect, 500);
+                return;
+            }
+            
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(typeEffect, speed);
+        }
+        
+        typeEffect();
+
+        // 粒子背景
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.skill-card, .paper-card, .patent-card, .interest-tag').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
