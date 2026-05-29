@@ -1,25 +1,513 @@
-name: Generate Snake
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仝莹莹 | 科研助理 | 人工智能mRNA疫苗研究</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-on:
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: Platane/snk@v3
-        id: snake-gif
-        with:
-          github_user_name: TongYingying.github.io
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-      - uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* 主卡片 */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* 头部波浪区域 */
+        .header-wave {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 40px 60px;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        .name .first-name {
+            background: rgba(255,255,255,0.2);
+            padding: 0 15px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        .title-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* 内容区域 */
+        .content {
+            padding: 40px;
+        }
+
+        /* 研究方向 */
+        .research-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .research-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            animation: pulse 2s infinite, glow 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* 技能网格 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .skill-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* 动画延迟 */
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* 波浪装饰 */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 50px;
+        }
+
+        /* 打字机效果 */
+        .typing-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .typing {
+            border-right: 2px solid #667eea;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        /* 关键帧动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                border-color: #667eea;
+            }
+            50.1%, 100% {
+                border-color: transparent;
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 1.8rem;
+            }
+            .content {
+                padding: 25px;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .typing {
+                white-space: normal;
+                border-right: none;
+            }
+        }
+
+        /* 粒子背景 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="profile-card">
+            <div class="header-wave">
+                <div class="avatar">
+                    🔬
+                </div>
+                <div class="name">
+                    <span class="first-name">仝莹莹</span>
+                </div>
+                <div class="title">
+                    <span class="title-tag">AIM中心 科研助理</span>
+                </div>
+                <div class="wave">
+                    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="white"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 研究方向 -->
+                <div class="research-section">
+                    <div class="section-title">🎯 研究方向</div>
+                    <div class="research-badge">
+                        人工智能驱动的 mRNA 疫苗开发
+                    </div>
+                </div>
+
+                <!-- 实验技能 -->
+                <div class="research-section">
+                    <div class="section-title">🧪 核心实验技能</div>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">🐭</div>
+                            <div class="skill-name">小鼠荷瘤</div>
+                            <div class="skill-desc">肿瘤模型建立</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">💉</div>
+                            <div class="skill-name">尾静脉注射</div>
+                            <div class="skill-desc">精准给药技术</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">🧫</div>
+                            <div class="skill-name">细胞培养</div>
+                            <div class="skill-desc">无菌操作·传代·冻存</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">🔬</div>
+                            <div class="skill-name">WB实验</div>
+                            <div class="skill-desc">Western Blot</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">🧬</div>
+                            <div class="skill-name">质粒提取与扩增</div>
+                            <div class="skill-desc">分子克隆基础</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 打字机效果自我介绍 -->
+                <div class="typing-text">
+                    <span class="typing" id="typing"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 打字机效果
+        const texts = [
+            "✨ 我是仝莹莹，AIM中心科研助理",
+            "🧬 专注人工智能驱动的 mRNA 疫苗开发",
+            "🐭 熟练掌握小鼠荷瘤、尾静脉注射等技术",
+            "🔬 细胞培养 · WB · 质粒提取 日常操作",
+            "🚀 用AI加速生物医学创新"
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing');
+        
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+                return;
+            }
+            
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeEffect, 500);
+                return;
+            }
+            
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(typeEffect, speed);
+        }
+        
+        typeEffect();
+
+        // 粒子背景效果
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        // 添加滚动动画观察器
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
